@@ -1,0 +1,36 @@
+
+<div class="col-sm-4">
+    <h4>Checkout form using reactive forms</h4>
+    <form [formGroup]="myform" (ngSubmit)="submit(myform.value)" >
+        <div class="form-group">
+          <label >Username</label>
+          <input (change)="changename(myform.value)" type="text" class="form-control" formControlName="name" id="name"placeholder="Enter full name">
+         <div class="alert alert-danger" *ngIf="f.name.touched && f.name.invalid" >
+        <div *ngIf="f.name.errors?.required" >Name is requier</div>
+            <div *ngIf="f.name.errors?.minlength" >Atleast 4 character</div>
+           <div *ngIf="f.name.errors?.email" >Please Enter valid email</div> 
+          </div> 
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input  type="password" class="form-control" formControlName="Password" placeholder="Password">
+           <div class="alert alert-danger" *ngIf="f.Password.touched && f.Password.invalid" >
+            <div *ngIf="f.Password.errors?.required" >password is requier</div>
+            <div *ngIf="f.Password.errors?.pattern" >Please Enter valid password</div>
+        </div> 
+        </div>
+        <button  type="submit" [disabled]="myform.invalid" class="btn btn-primary"  >Register</button>
+        
+      </form>
+      <br/>
+      <button (click)="Login()" class="btn btn-success">Login </button>
+      <hr/>
+      <button (click)="removeItem()" class="btn btn-danger">Remove My Data</button>
+     
+    
+      
+       <p>{{myid}}</p>
+       
+
+    
+</div>
